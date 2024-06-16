@@ -2,6 +2,9 @@ package flashcards;
 
 import com.beust.jcommander.JCommander;
 import com.google.gson.*;
+import flashcards.args.Args;
+import flashcards.utils.FileAccess;
+import flashcards.utils.SimpleLogger;
 
 import java.io.IOException;
 import java.util.*;
@@ -9,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class FlashcardManagementSystem {
 
-   private Scanner scanner = new Scanner(System.in);
+   private Scanner scanner;
    private JsonObject cache = new JsonObject();
    private Gson gson = new Gson();
    private FileAccess fileAccess = new FileAccess();
@@ -23,6 +26,10 @@ public class FlashcardManagementSystem {
    private List<Flashcard> flashcardErrorList = new ArrayList<>();
    private SimpleLogger logger = new SimpleLogger(fileAccess);
    private Args commandArgs = new Args();
+
+   public FlashcardManagementSystem(Scanner scanner) {
+      this.scanner = scanner;
+   }
 
    public void run(String[] args) {
       JCommander parser = JCommander.newBuilder()
@@ -56,7 +63,11 @@ public class FlashcardManagementSystem {
       }
    }
 
-   private void add() {
+   public Map<String, Flashcard> getCards() {
+      return cards;
+   }
+
+   public void add() {
       logger.info("The card:");
       String term = scanner.nextLine();
       logger.addInput(term);
@@ -80,7 +91,7 @@ public class FlashcardManagementSystem {
       logger.info("The pair (\"" + term + "\":\"" + definition + "\") has been added.");
    }
 
-   private void remove() {
+   public void remove() {
       logger.info("Which card?");
       String term = scanner.nextLine();
       logger.addInput(term);
@@ -92,7 +103,7 @@ public class FlashcardManagementSystem {
          logger.info("Can't remove \"" + term + "\": there is no such card.");
    }
 
-   private void import_() {
+   public void import_() {
       logger.info("File name:");
       String fileName = scanner.nextLine();
       logger.addInput(fileName);
@@ -100,7 +111,7 @@ public class FlashcardManagementSystem {
       importCards(fileName);
    }
 
-   private void importCards(String fileName) {
+   public void importCards(String fileName) {
       String temp = null;
       try {
          temp = fileAccess.readFromFile(fileName);
@@ -153,7 +164,7 @@ public class FlashcardManagementSystem {
       }
    }
 
-   private void export() {
+   public void export() {
       logger.info("File name:");
       String fileName = scanner.nextLine();
       logger.addInput(fileName);
@@ -161,7 +172,7 @@ public class FlashcardManagementSystem {
       exportCards(fileName);
    }
 
-   private void exportCards(String filename) {
+   public void exportCards(String filename) {
       JsonArray tempArray = new JsonArray();
 
       for (Map.Entry<String, Flashcard> entry : cards.entrySet()) {
@@ -184,7 +195,7 @@ public class FlashcardManagementSystem {
       }
    }
 
-   private void ask() {
+   public void ask() {
       int numberOfCards = 0;
       String term;
       String definition;
@@ -221,7 +232,7 @@ public class FlashcardManagementSystem {
       }
    }
 
-   private void compareToMostErrorCount(Flashcard card) {
+   public void compareToMostErrorCount(Flashcard card) {
       card.addMistake();
       int mistakeCount = card.getMistakeCount();
       if (mistakeCount == this.mostErrorCount) {
@@ -234,7 +245,7 @@ public class FlashcardManagementSystem {
       }
    }
 
-   private void showHardestCard() {
+   public void showHardestCard() {
       if (mostErrorCount == 0)
          logger.info("There are no cards with errors.");
       else {
@@ -251,7 +262,7 @@ public class FlashcardManagementSystem {
       }
    }
 
-   private void resetStats() {
+   public void resetStats() {
       mostErrorCount = 0;
       for (Flashcard card : cards.values())
          card.resetMistakeCount();
@@ -272,7 +283,7 @@ public class FlashcardManagementSystem {
       }
    }
 
-   private void exit() {
+   public void exit() {
       if (commandArgs.exportPath != null)
          exportCards(commandArgs.exportPath);
 

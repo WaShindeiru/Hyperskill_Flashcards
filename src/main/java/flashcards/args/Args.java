@@ -1,4 +1,4 @@
-package flashcards;
+package flashcards.args;
 
 import com.beust.jcommander.Parameter;
 
