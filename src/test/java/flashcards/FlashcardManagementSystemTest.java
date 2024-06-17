@@ -194,6 +194,21 @@ class FlashcardManagementSystemTest {
    }
 
    @Test
+   public void testWrongAnswer() {
+      String inputString = "add\nbulbasaur\ngrass\nask\n1\nwrong\nexit";
+      Scanner scanner = new Scanner(inputString);
+      FlashcardManagementSystem cardSystem = new FlashcardManagementSystem(scanner);
+      String[] args = {};
+
+      cardSystem.run(args);
+
+      Map<String, Flashcard> cards = cardSystem.getCards();
+
+      assertThat(cards.containsKey("bulbasaur")).isTrue();
+      assertThat(cards.get("bulbasaur").getMistakeCount()).isEqualTo(1);
+   }
+
+   @Test
    public void testReset() {
       String inputString = "add\nbulbasaur\ngrass\nask\n1\nwrong\nreset stats\nexit";
       Scanner scanner = new Scanner(inputString);
