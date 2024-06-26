@@ -3,8 +3,9 @@ package flashcards;
 import com.beust.jcommander.JCommander;
 import com.google.gson.*;
 import flashcards.args.Args;
-import flashcards.utils.FileAccess;
-import flashcards.utils.SimpleLogger;
+import flashcards.flashcard.Flashcard;
+import flashcards.internal.FileAccess;
+import flashcards.internal.SimpleLogger;
 
 import java.io.IOException;
 import java.util.*;

@@ -1,6 +1,7 @@
 package flashcards;
 
-import flashcards.utils.FileAccess;
+import flashcards.flashcard.Flashcard;
+import flashcards.internal.FileAccess;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

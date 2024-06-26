@@ -1,4 +1,4 @@
-package flashcards;
+package flashcards.flashcard;
 
 public class Flashcard implements Comparable<Flashcard> {
 

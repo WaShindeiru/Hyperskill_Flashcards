@@ -1,4 +1,4 @@
-package flashcards.utils;
+package flashcards.internal;
 
 import java.io.IOException;
 import java.util.ArrayList;

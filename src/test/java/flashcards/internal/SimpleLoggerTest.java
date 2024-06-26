@@ -1,4 +1,4 @@
-package flashcards.utils;
+package flashcards.internal;
 
 import org.junit.jupiter.api.Test;
 
