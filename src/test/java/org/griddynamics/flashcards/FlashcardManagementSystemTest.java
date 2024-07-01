@@ -1,7 +1,8 @@
-package flashcards;
+package org.griddynamics.flashcards;
 
-import flashcards.flashcard.Flashcard;
-import flashcards.internal.FileAccess;
+import org.griddynamics.flashcards.Flashcard;
+import org.griddynamics.flashcards.FlashcardManagementSystem;
+import org.griddynamics.flashcards.util.FileAccess;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

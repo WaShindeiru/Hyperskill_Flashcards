@@ -1,4 +1,4 @@
-package flashcards;
+package org.griddynamics.flashcards;
 
 import java.util.Scanner;
 

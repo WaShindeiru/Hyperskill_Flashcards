@@ -1,4 +1,4 @@
-package flashcards.flashcard;
+package org.griddynamics.flashcards;
 
 public class Flashcard implements Comparable<Flashcard> {
 

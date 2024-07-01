@@ -1,5 +1,6 @@
-package flashcards.internal;
+package org.griddynamics.flashcards.util;
 
+import org.griddynamics.flashcards.util.FileAccess;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

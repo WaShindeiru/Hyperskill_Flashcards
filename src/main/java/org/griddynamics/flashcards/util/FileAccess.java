@@ -1,4 +1,4 @@
-package flashcards.internal;
+package org.griddynamics.flashcards.util;
 
 import java.io.*;
 

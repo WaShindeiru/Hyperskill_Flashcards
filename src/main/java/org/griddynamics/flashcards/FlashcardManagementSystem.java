@@ -1,11 +1,10 @@
-package flashcards;
+package org.griddynamics.flashcards;
 
 import com.beust.jcommander.JCommander;
 import com.google.gson.*;
-import flashcards.args.Args;
-import flashcards.flashcard.Flashcard;
-import flashcards.internal.FileAccess;
-import flashcards.internal.SimpleLogger;
+import org.griddynamics.flashcards.args.Args;
+import org.griddynamics.flashcards.util.FileAccess;
+import org.griddynamics.flashcards.util.SimpleLogger;
 
 import java.io.IOException;
 import java.util.*;

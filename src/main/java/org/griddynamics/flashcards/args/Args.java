@@ -1,4 +1,4 @@
-package flashcards.args;
+package org.griddynamics.flashcards.args;
 
 import com.beust.jcommander.Parameter;
 
